@@ -248,10 +248,6 @@ function startupgrowth_lite_preprocess_html(&$variables) {
 
 	drupal_add_css(path_to_theme() . '/ie9.css', array('group' => CSS_THEME, 'browsers' => array('IE' => '(IE 9)&(!IEMobile)', '!IE' => FALSE), 'preprocess' => FALSE));
     
-     drupal_add_css('/sites/all/libraries/font-awesome/css/font-awesome.css', array(
-      'type' => 'external'
-  ));
-    
 	/**
 	 * Add local.css file for CSS overrides.
 	 */
@@ -261,13 +257,12 @@ function startupgrowth_lite_preprocess_html(&$variables) {
 	* Bootstrap CDN
 	*/
     if (theme_get_setting('bootstrap_css_cdn')) {
-        $cdn = '//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.css';
+        $cdn = '//maxcdn.bootstrapcdn.com/bootstrap/' . theme_get_setting('bootstrap_css_cdn')  . '/css/bootstrap.min.css';
         drupal_add_css($cdn, array('type' => 'external'));
     }
     
     if (theme_get_setting('bootstrap_js_cdn')) {
-        drupal_add_js("//code.jquery.com/jquery-1.12.4.js",array('type' => 'external'));
-        $cdn = '//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.js';
+        $cdn = '//maxcdn.bootstrapcdn.com/bootstrap/' . theme_get_setting('bootstrap_js_cdn')  . '/js/bootstrap.min.js';
         drupal_add_js($cdn, array('type' => 'external'));
     }
 	
@@ -419,7 +414,7 @@ function startupgrowth_lite_preprocess_html(&$variables) {
 				$("body").removeClass("onscroll");
 				$("body").removeClass("show");
 				$("body").css("paddingTop", (0)+"px");
-				$("body.logged-in").css("paddingTop", (0)+"px");
+				$("body.logged-in").css("paddingTop", (64)+"px");
 			}
 			});
 		});',
@@ -583,10 +578,10 @@ function startupgrowth_lite_page_alter($page) {
 		'content' =>  'width=device-width, initial-scale=1'
 		)
 	);
-    
 	drupal_add_html_head($mobileoptimized, 'MobileOptimized');
 	drupal_add_html_head($handheldfriendly, 'HandheldFriendly');
 	drupal_add_html_head($viewport, 'viewport');
+	
 }
 
 function startupgrowth_lite_form_alter(&$form, &$form_state, $form_id) {

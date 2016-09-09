@@ -96,7 +96,8 @@ function startupgrowth_lite_form_system_theme_settings_alter(&$form, &$form_stat
         '#type' => 'select',
         '#title' => t('BootstrapCDN Complete CSS version'),
         '#options' => drupal_map_assoc(array(
-          '3.2.0'
+          '3.2.0',
+          '3.3.2'
         )),
         '#default_value' => theme_get_setting('bootstrap_css_cdn'),
         '#empty_value' => NULL,
@@ -106,7 +107,8 @@ function startupgrowth_lite_form_system_theme_settings_alter(&$form, &$form_stat
         '#type' => 'select',
         '#title' => t('BootstrapCDN Complete JavaScript version'),
         '#options' => drupal_map_assoc(array(
-          '3.2.0'
+          '3.2.0',
+          '3.3.2'
         )),
         '#default_value' => theme_get_setting('bootstrap_js_cdn'),
         '#empty_option' => t('Disabled'),
